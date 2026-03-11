@@ -46,9 +46,6 @@ El repositorio está organizado de la siguiente manera:
 
 Para visualizar y utilizar este proyecto, simplemente clona este repositorio en tu máquina local y abre los archivos `index.html` de cada sede en tu navegador web.
 
-```bash
-git clone <URL-DEL-REPOSITORIO>
-```
 
 ---
 
