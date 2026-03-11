@@ -1,0 +1,531 @@
+:root {
+    --negro: #0a0b0b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 1rem;
+}
+
+@font-face {
+    font-family: "HelveticaCustom";
+    src: url("../fonts/Helvetica.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "HelveticaCustom";
+    src: url("../fonts/Helvetica-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+body {
+    font-family: "HelveticaCustom", sans-serif;
+    color: var(--negro);
+}
+
+.contenedor {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "parte1"
+        "parte2"
+        "parte3"
+        "parte4";
+    overflow: hidden;
+}
+
+/* HEADER */
+.header {
+    grid-area: parte1;
+    border-bottom: 0.4rem solid #c6c6c6;
+}
+
+.logo {
+    width: 100%;
+    height: 85px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 0.8rem;
+}
+
+.logo.victoria { background-image: url("../IMAGES/logos/lavictoria.png"); height: 80px; }
+.logo.callao { background-image: url("../IMAGES/logos/callao.png"); }
+.logo.chorrillos { background-image: url("../IMAGES/logos/chorrillos.png"); }
+.logo.sanmiguel { background-image: url("../IMAGES/logos/sanmiguel.png"); }
+.logo.surquillo { background-image: url("../IMAGES/logos/surquillo.png"); }
+
+/* DATOS SECCION */
+.datos {
+    grid-area: parte2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0.8rem;
+    margin-top: 1rem;
+}
+
+.dato1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner {
+    width: 100%;
+    max-width: 300px;
+    height: 390px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 2rem auto;
+    border-radius: 0.1rem;
+}
+
+.victoria { background-image: url("../IMAGES/LAVICTORIA_DESKTOP.png"); }
+.callao { background-image: url("../IMAGES/CALLAO_DESKTOP.png"); }
+.chorrillos { background-image: url("../IMAGES/CHORRILLOS_DESKTOP.png"); }
+.sanmiguel { background-image: url("../IMAGES/SANMIGUEL_DESKTOP.png"); }
+.surquillo { background-image: url("../IMAGES/SURQUILLO_DESKTOP.png"); }
+
+.nombre-banner {
+    border-top: 0.25rem solid #c6c6c6;
+    border-bottom: 0.25rem solid #c6c6c6;
+    padding: 0.4rem 0.6rem;
+    font-weight: bold;
+    font-family: 'HelveticaCustom', sans-serif;
+    font-size: 1.3rem;
+}
+
+.dato2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.7rem 1rem 1rem;
+}
+
+.primera, .segunda {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.primera {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+}
+
+.tercera {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+    row-gap: 0.3rem;
+}
+
+.text-tercera {
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+.t3 { font-size: 1rem; }
+
+/* CONTENIDO Y TEXTOS */
+.contenido {
+    grid-area: parte3;
+    padding: 0 1.1rem;
+}
+
+.titulo { display: none; }
+
+.texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+}
+
+.texto1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.googleMaps-container {
+    width: 95%;
+    margin: 1.5rem auto;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.googleMaps-container iframe {
+    width: 100%;
+    height: 350px !important;
+    display: block;
+}
+
+.negrita {
+    font-weight: bold;
+    font-size: 0.92rem;
+}
+
+.subtitulo { font-size: 1.3rem; }
+
+.titulo-form {
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+}
+
+/* FORMULARIO ELEMENTOS */
+.categoria {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #c6c6c6;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #0a0b0b;
+    border-color: #0a0b0b;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    left: 2px;
+    top: -1px;
+}
+
+/* ============================================================
+   🔥 SOLUCIÓN DEFINITIVA (CORRECCIÓN DE TEXTO SUPERPUESTO)
+   ============================================================ */
+
+.input-date {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Icono visual del calendario (tu icono) */
+.input-date::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 16px;
+    background-image: url("../IMAGES/icono/calendario.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Estilo unificado para todos los inputs */
+.input {
+    width: 100%;
+    padding: 0.8rem 0.6rem;
+    outline: none;
+    border: 1.5px solid #c6c6c6;
+    border-radius: 0.1rem;
+    font-size: 16px;
+    font-family: "HelveticaCustom", sans-serif;
+    background-color: white;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    display: block;
+}
+
+/* Específico para el input de FECHA */
+input[type="date"].input {
+    min-height: 2.8rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    /* FIX: Ocultamos el texto nativo (dd/mm/aaaa) por defecto */
+    color: transparent; 
+}
+
+/* Cuando el usuario toca el campo o ya eligió fecha, el texto se vuelve negro */
+input[type="date"].input:focus,
+input[type="date"].input:valid {
+    color: var(--negro) !important;
+}
+
+/* Placeholder simulado */
+.input-fecha::before {
+    content: "Fecha de nacimiento";
+    position: absolute;
+    color: #0a0b0ba9;
+    left: 0.6rem;
+    font-size: 18px;
+    pointer-events: none;
+    display: block;
+    z-index: 2;
+}
+
+/* Ocultar el placeholder simulado al activarse */
+.input-fecha:focus::before,
+.input-fecha:valid::before {
+    display: none !important;
+}
+
+/* Selector nativo invisible (Cubre todo el input para capturar el click) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Extra fix para Chrome/Android: oculta los guiones nativos si no hay foco */
+input[type="date"]:not(:focus):not(:valid)::-webkit-datetime-edit-text,
+input[type="date"]:not(:focus):not(:valid)::-webkit-datetime-edit-month-field,
+input[type="date"]:not(:focus):not(:valid)::-webkit-datetime-edit-day-field,
+input[type="date"]:not(:focus):not(:valid)::-webkit-datetime-edit-year-field {
+    color: transparent;
+}
+/* ============================================================ */
+
+.label { font-weight: 200; }
+
+.bloquecheck {
+    display: flex;
+    flex-direction: column;
+}
+
+.cheks {
+    display: flex;
+    column-gap: 1.3rem;
+    margin: 0.9rem 0 1rem;
+}
+
+.chek1 {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.form-bloque {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+    margin-top: 1rem;
+}
+
+.titulo-capitan {
+    margin-bottom: 0.5rem;
+    font-size: 1.06rem;
+}
+
+.error {
+    visibility: hidden;
+    height: 0.5rem;
+    color: #ff0000cf;
+    font-size: 0.7rem;
+    margin-top: -0.3rem;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+    margin-left: 0.3rem;
+}
+
+.bases {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.enlace-base {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+}
+
+.descargas{
+    display: flex;
+    flex-direction: column;
+}
+
+.des1 {
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-top: 0.3rem;
+    color: #111111;
+    margin-bottom: 0.4rem;
+}
+
+.descargar {
+    text-decoration: none;
+    border-bottom: 1.5px solid #000;
+    font-weight: bold;
+    color: #111111;
+}
+
+
+.boton {
+    outline: none;
+    border: none;
+    background: #f5f5f5;
+    padding: 1rem 2rem;
+    color: #000;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 1.8rem;
+    margin-left: 0.6rem;
+    margin-bottom: 3rem;
+    border-radius: 0.6rem;
+}
+
+.boton:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.footer {
+    grid-area: parte4;
+    background-color: #000;
+    height: 4.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logofinal {
+    width: 100%;
+    height: 95px;
+    background-image: url("../IMAGES/logos/nikefutbol.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 0.3rem;
+}
+
+/* Spinner de Carga */
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.btn-loading {
+    background-color: #555 !important;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+    .logo { height: 110px; margin-left: 2.5rem; }
+    .logo.victoria { height: 92px; }
+    .banner { max-width: 370px; height: 470px; }
+    .datos { width: 80%; margin: 0 auto; }
+    .nombre-banner { font-size: 1.5rem; padding: 0.72rem 1rem; }
+    .texto1 { font-size: 1.35rem; margin-top: 0.6rem; row-gap: 1.8rem; }
+    .googleMaps-container iframe { height: 400px !important; }
+    .negrita { font-size: 1.25rem; }
+    .dato2 { font-size: 1.15rem; }
+    .primera { font-size: 1.3rem; }
+    .subtitulo { font-size: 2rem; }
+    .titulo-form { font-size: 2.2rem; margin-top: 1.3rem; }
+    .text-tercera { font-size: 1.22rem; }
+    .label { font-size: 1.2rem; }
+    .categoria { font-size: 1.2rem; }
+    .titulo-capitan { font-size: 1.45rem; margin-bottom: 1rem; }
+    .contenido { width: 80%; margin: 0 auto; }
+    .input { padding: 0.8rem 0.6rem; font-size: 1.15rem; color: #0a0b0be6; }
+    input[type="checkbox"] { width: 20.5px; height: 20.5px; }
+    .bases { font-size: 1.3rem; }
+    .des1, .des2 { font-size: 0.9rem; margin-top: 0.5rem; }
+    .boton { padding: 1.4rem 2.8rem; font-size: 1.25rem; margin-top: 2rem; }
+    .footer { height: 8rem; }
+    .logofinal { height: 140px; }
+}
+
+@media (min-width: 820px) {
+    .nombre-banner { font-size: 1.8rem; }
+    .subtitulo { font-size: 2.3rem; line-height: 1; }
+}
+
+@media (min-width: 1024px) {
+    .contenedor {
+        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "parte1 parte1"
+            "parte3 parte2"
+            "parte4 parte4";
+        margin: 0 auto;
+    }
+    .logo { height: 125px; margin-left: 2.5rem; }
+    .logo.victoria { height: 113px; }
+    .contenido { width: 85%; margin: 0 auto; padding-top: 3rem; padding-bottom: 4rem; align-self: start; }
+    .nombre-banner { border-top: none; border-bottom: 0.4rem solid #000; }
+    .titulo { display: block; font-size: 2.2rem; margin-bottom: 1.5rem; }
+    .datos { width: 80%; margin: 0 auto; padding-top: 3rem; justify-content: flex-start; align-self: start; }
+    .banner { max-width: 100%; height: 520px; margin-top: 0; margin-bottom: 1.5rem; }
+    .texto1 { font-size: 0.9rem; row-gap: 1.2rem; }
+    .subtitulo { font-size: 1.5rem; margin-top: 1rem; }
+    .titulo-form { margin-top: 2rem; margin-bottom: 2rem; }
+    .cheks { flex-direction: row; column-gap: 3rem; }
+    .input { padding: 0.9rem 0.6rem; }
+    .boton { margin-left: 0; padding: 1.2rem 3rem; }
+    .googleMaps-container iframe { height: 380px !important; }
+    .negrita { font-size: 0.95rem; }
+}
+
+@media (min-width: 1440px) {
+    .contenedor { grid-template-columns: 1.15fr 0.85fr; }
+    .contenido { width: 75%; }
+    .datos { width: 75%; }
+    .banner { height: 580px; }
+}

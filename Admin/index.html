@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard CM - Toma El Juego</title>
+    <link rel="stylesheet" href="../CSS/admin.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <header class="header-admin">
+            <div class="header-titulos">
+                <h1>Panel de Registros</h1>
+                <p>Gestión de equipos inscritos - Toma El Juego</p>
+            </div>
+        </header>
+
+        <section class="filtros-container">
+            <div class="grupo-filtro">
+                <label>Buscar (Capitán o DNI)</label>
+                <input type="text" id="buscarTexto" placeholder="Ej. Juan Pérez o 7483...">
+            </div>
+            <div class="grupo-filtro">
+                <label>Sede</label>
+                <select id="filtroSede">
+                    <option value="Todas">Todas las Sedes</option>
+                    <option value="La Victoria">La Victoria</option>
+                    <option value="Chorrillos">Chorrillos</option>
+                    <option value="Callao">Callao</option>
+                    <option value="San Miguel">San Miguel</option>
+                    <option value="Surquillo">Surquillo</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label>Categoría</label>
+                <select id="filtroCategoria">
+                    <option value="Todas">Ambas</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label>Estado</label>
+                <select id="filtroEstado">
+                    <option value="Todos">Todos</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Registrado">Registrado</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="tabla-contenedor">
+            <table id="tablaRegistros">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Sede</th>
+                        <th>Categoría</th>
+                        <th>Capitán</th>
+                        <th>DNI</th>
+                        <th>WhatsApp</th>
+                        <th>Estado</th>
+                        <th class="th-acciones">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyRegistros">
+                    </tbody>
+            </table>
+        </section>
+
+        <div class="paginacion">
+            <button id="btnAnterior" class="btn btn-pag">Anterior</button>
+            <span id="infoPagina">Página 1 de 1</span>
+            <button id="btnSiguiente" class="btn btn-pag">Siguiente</button>
+        </div>
+    </div>
+
+    <div id="modalDetalle" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalles del Equipo</h2>
+                <span class="close-modal" id="cerrarModal">&times;</span>
+            </div>
+            <div class="modal-body" id="modalCuerpo">
+                </div>
+            <div class="modal-footer">
+                <button class="btn btn-secundario" id="btnCerrarAbajo">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script src="../JS/admin.js"></script>
+</body>
+</html>

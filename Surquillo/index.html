@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/estilos.css?v=3.0">
+    <title>TomaElJuego - Surquillo</title>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
+            <div class="logo surquillo"></div>
+        </div>
+        <div class="datos">
+            <div class="dato1">
+                <div class="banner surquillo"></div>
+                <div class="nombre-banner">Toma el Juego: Surquillo</div>
+            </div>
+            <div class="dato2">
+                <div class="primera">
+                    <img src="../IMAGES/icono/calendario.png" alt="Calendario" class="icono">
+                    <p class="text-primera">Sábado, 18 de abril</p>
+                </div>
+                <div class="segunda">
+                    <img src="../IMAGES/icono/ubicacion.png" alt="Ubicacion" class="icono">
+                    <p class="text-segunda">6:00 p.m. - 8:00 p.m.</p>
+                </div>
+                <div class="tercera">
+                    <p class="text-tercera">Parque San Felipe</p>
+                    <p class="text-cuarta">El Carmen 1043,</p>
+                    <p class="text-quinta">Surquillo</p>
+                </div>
+            </div>
+            <div class="googleMaps-container">
+                <iframe src="https://maps.google.com/maps?q=Parque%20San%20Felipe,%20Surquillo,%20Lima&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="contenido">
+            <h1 class="titulo">Toma El Juego | Surquillo</h1>
+            <div class="texto">
+                <div class="texto1">
+                    <p class="parrafo1">
+                    Toma El Juego es un evento lleno  de energia donde te espera un <span class="negrita">torneo de futbol callejero en formato 3 vs 3</span> que combina juego, estilo y cultura. ¿Qué estás esperando? <span class="negrita">¡Completa tu registro y sé parte de la experiencia!</span>
+                    </p>
+                    <p class="parrafo2">
+                        Exclusivo para hombres y mujeres de <span class="negrita">15 a 18 años inclusive.</span>
+                    </p>
+                    <h2 class="subtitulo">Información adicional antes de registrarte.</h2>
+                    <p class="parrafo3">
+                        Si no eres mayor de edad, tu padre, madre o tutor legal deberá firmar la autorización para el uso de imagen y tratamiento de datos personales.
+                    </p>
+                </div>
+                <h3 class="titulo-form">Inscríbete. Toma El Juego.</h3>
+            </div>
+            <h4 class="categoria">Categoría</h4>
+            <form action="" class="formulario" id="formulario">
+                <div class="bloquecheck">
+                    <div class="cheks">
+                        <div class="chek1">
+                            <input type="checkbox" name="categoria" id="masculino" value="masculino">
+                            <label for="masculino" class="label">Masculino</label>
+                        </div>
+                        <div class="chek1">
+                            <input type="checkbox" name="categoria" id="femenino" value="femenino">
+                            <label for="femenino" class="label">Femenino</label>
+                        </div>
+                    </div>
+                    <p class="error"></p>
+                </div>
+
+                <div class="form-bloque">
+                    <h4 class="titulo-capitan">Datos del Capitán</h4>
+                    <input type="text" name="nombre_capitan" id="nombre_capitan" placeholder="Nombre completo" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="dni_capitan" id="dni_capitan" placeholder="Documento de identidad / DNI" class="input">
+                    <p class="error"></p>
+                    <div class="input-date">
+                        <input type="date" name="nacimiento_capitan" id="nacimiento_capitan" class="input input-fecha" required>
+                    </div>
+                    <p class="error"></p>
+                    <input type="text" name="whatsapp_capitan" id="whatsapp_capitan" placeholder="WhatsApp" class="input">
+                    <p class="error"></p>
+                    <input type="email" name="email_capitan" id="email_capitan" placeholder="Correo electrónico" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="direccion_capitan" id="direccion_capitan" placeholder="Dirección" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="emergencia_capitan" id="emergencia_capitan" placeholder="Número de contacto de emergencia (opcional)" class="input">
+                    <p class="error"></p>
+                </div>
+
+                <div class="form-bloque">
+                    <h4 class="titulo-capitan">Datos del jugador 2</h4>
+                    <input type="text" name="nombre_j2" id="nombre_j2" placeholder="Nombre completo" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="dni_j2" id="dni_j2" placeholder="Documento de identidad / DNI" class="input">
+                    <p class="error"></p>
+                    <div class="input-date">
+                        <input type="date" name="nacimiento_j2" id="nacimiento_j2" class="input input-fecha" required>
+                    </div>
+                    <p class="error"></p>
+                    <input type="email" name="email_j2" id="email_j2" placeholder="Correo electrónico" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="emergencia_j2" id="emergencia_j2" placeholder="Número de contacto de emergencia (opcional)" class="input">
+                    <p class="error"></p>
+                </div>
+
+                <div class="form-bloque">
+                    <h4 class="titulo-capitan">Datos del jugador 3</h4>
+                    <input type="text" name="nombre_j3" id="nombre_j3" placeholder="Nombre completo" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="dni_j3" id="dni_j3" placeholder="Documento de identidad / DNI" class="input">
+                    <p class="error"></p>
+                    <div class="input-date">
+                        <input type="date" name="nacimiento_j3" id="nacimiento_j3" class="input input-fecha" required>
+                    </div>
+                    <p class="error"></p>
+                    <input type="email" name="email_j3" id="email_j3" placeholder="Correo electrónico" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="emergencia_j3" id="emergencia_j3" placeholder="Número de contacto de emergencia (opcional)" class="input">
+                    <p class="error"></p>
+                </div>
+
+                <div class="form-bloque">
+                    <h4 class="titulo-capitan">JUGADOR SUPLENTE (OPCIONAL)</h4>
+                    <input type="text" name="nombre_suplente" id="nombre_suplente" placeholder="Nombre completo" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="dni_suplente" id="dni_suplente" placeholder="Documento de identidad / DNI" class="input">
+                    <p class="error"></p>
+                    <div class="input-date">
+                        <input type="date" name="nacimiento_suplente" id="nacimiento_suplente" class="input input-fecha">
+                    </div>
+                    <p class="error"></p>
+                    <input type="email" name="email_suplente" id="email_suplente" placeholder="Correo electrónico" class="input">
+                    <p class="error"></p>
+                    <input type="text" name="emergencia_suplente" id="emergencia_suplente" placeholder="Número de contacto de emergencia (opcional)" class="input">
+                    <p class="error"></p>
+                </div>
+
+                <div class="bases">
+                    <input type="checkbox" name="acepta" id="acepta" value="acepta">
+                    <label for="acepta">He leído y acepto las <a href="#" class="enlace-base">Bases y Condiciones.</a></label>
+                </div>
+                
+                <div class="descargas">
+                    <p class="des1"><a href="../Archivos/Autorizacion Mayores de Edad - NIKE TOMA EL JUEGO 2026.docx" class="descargar">Descargar</a> la Cesión de Derechos de Imágenes - Mayores de Edad</p>
+                    <p class="des1"><a href="../Archivos/Cesión Menores de Edad - NIKE TOMA EL JUEGO 2026.docx" class="descargar">Descargar</a> la Cesión de Derechos de Imágenes - Menores de Edad</p>
+                </div>
+                
+                <input type="submit" value="Inscribir a mi equipo" class="boton">
+            </form>
+        </div>
+        <div class="footer">
+            <div class="logofinal"></div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="../JS/app.js"></script>
+</body>
+</html>

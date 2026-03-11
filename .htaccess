@@ -1,0 +1,18 @@
+# Desactivar el slash automático
+DirectorySlash Off
+RewriteEngine On
+
+# 1. Eliminar el slash final de la URL (Redirección estética)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# 2. Servir el index.html de la carpeta de forma interna
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^([^/]+)$ $1/index.html [L]
+
+# 3. Regla especial para que los archivos (CSS, JS, Imágenes) carguen bien
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/(Admin|SanMiguel|LaVictoria|JS|CSS|IMAGES)/(.+)$
+RewriteRule ^ %2 [L]
