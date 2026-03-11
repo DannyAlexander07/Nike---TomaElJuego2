@@ -52,4 +52,4 @@ git clone <URL-DEL-REPOSITORIO>
 
 ---
 
-Creado con ❤️ para los amantes del fútbol.
+Creado por: Danny Alexander Arellano Sanchez.
