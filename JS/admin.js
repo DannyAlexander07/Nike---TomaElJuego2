@@ -106,8 +106,18 @@ function verDetalles(firestoreId) {
     const eq = equipos.find(e => e.firestoreId === firestoreId);
     if (!eq) return;
 
+    // 1. Identificar jugadores registrados para validar el equipo completo
+    const jugadoresParaValidar = [eq.capitan, eq.j2, eq.j3, eq.suplente].filter(j => j && j.nombre);
+    
+    // 2. Verificar si TODOS cumplen con el rango (2007-07-08 a 2011-03-12)
+    const equipoEsApto = jugadoresParaValidar.every(j => {
+        const info = calcularInfoEdad(j.nacimiento);
+        return info ? info.apto : true;
+    });
+
     const cuerpo = document.getElementById('modalCuerpo');
 
+    // 3. Función interna para generar cada bloque de jugador
     const generarBloqueJugador = (titulo, datos, esCapitan = false) => {
         if (!datos || (!esCapitan && !datos.nombre)) {
             return `
@@ -117,32 +127,57 @@ function verDetalles(firestoreId) {
                 </div>`;
         }
 
+        // Calculamos la info de edad basada en los límites del torneo
+        const infoEdad = calcularInfoEdad(datos.nacimiento);
+
         return `
-            <div class="dato-item" ${esCapitan ? 'style="border-top: 4px solid var(--primary);"' : ''}>
+            <div class="dato-item" ${esCapitan ? 'style="border-top: 4px solid #000;"' : ''}>
                 <h4>${titulo}</h4>
                 <p><strong>Nombre:</strong> ${datos.nombre || 'N/A'}</p>
                 <p><strong>DNI:</strong> ${datos.dni || 'N/A'}</p>
-                <p><strong>Nacimiento:</strong> ${datos.nacimiento || 'N/A'}</p>
+                <p><strong>Nacimiento:</strong> ${datos.nacimiento || 'N/A'} 
+                    <span style="display:block; font-size:0.85rem; color:${infoEdad.color}; font-weight:bold; margin-top:4px;">
+                        ${infoEdad.texto} ${infoEdad.apto ? '✅' : '❌'}
+                    </span>
+                </p>
                 <p><strong>Email:</strong> ${datos.email || 'N/A'}</p>
                 ${esCapitan ? `<p><strong>WhatsApp:</strong> ${datos.whatsapp || 'N/A'}</p>` : ''}
                 ${esCapitan ? `<p><strong>Dirección:</strong> ${datos.direccion || 'N/A'}</p>` : ''}
-                <p style="color: #e74c3c; font-weight: bold;"><strong>Emergencia:</strong> ${datos.emergencia || 'No proporcionado'}</p>
+                <p style="color: #e74c3c; font-weight: bold; margin-top: 5px;">
+                    <strong>Emergencia:</strong> ${datos.emergencia || 'No proporcionado'}
+                </p>
             </div>
         `;
     };
 
+    // 4. Inyectar el HTML al cuerpo del modal
     cuerpo.innerHTML = `
-        <div style="margin-bottom: 1rem; padding-bottom: 10px; border-bottom: 1px solid #eee; font-family: 'Helvetica', sans-serif;">
-            <span style="background: #000; color: #fff; padding: 2px 8px; border-radius: 4px; margin-right: 10px;">ID: ${eq.id ? eq.id.toString().slice(-6) : '---'}</span>
-            <strong>Sede:</strong> ${eq.sede} | <strong>Categoría:</strong> ${eq.categoria} | <strong>Estado:</strong> ${eq.estado}
+        <div style="margin-bottom: 1.5rem; padding-bottom: 12px; border-bottom: 2px solid #f1f1f1; font-family: 'Helvetica', sans-serif;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <span style="background: #000; color: #fff; padding: 3px 10px; border-radius: 4px; font-weight: bold; margin-right: 10px;">
+                        ID: ${eq.id ? eq.id.toString().slice(-6) : '---'}
+                    </span>
+                    <strong>Sede:</strong> ${eq.sede} | <strong>Cat:</strong> ${eq.categoria} | <strong>Estado:</strong> ${eq.estado}
+                </div>
+                <div style="background: ${equipoEsApto ? '#27ae60' : '#e74c3c'}; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">
+                    ${equipoEsApto ? 'EQUIPO APTO ✅' : 'REVISAR EDADES ⚠️'}
+                </div>
+            </div>
         </div>
+        
         <div class="grid-datos">
             ${generarBloqueJugador('Capitán', eq.capitan, true)}
             ${generarBloqueJugador('Jugador 2', eq.j2)}
             ${generarBloqueJugador('Jugador 3', eq.j3)}
             ${generarBloqueJugador('Jugador Suplente', eq.suplente)}
         </div>
-        ${eq.fechaRegistro ? `<div style="margin-top: 1rem; font-size: 0.8rem; color: #888; text-align: right;">Registrado el: ${new Date(eq.fechaRegistro).toLocaleString()}</div>` : ''}
+
+        ${eq.fechaRegistro ? `
+            <div style="margin-top: 1.5rem; font-size: 0.75rem; color: #aaa; text-align: right; font-style: italic;">
+                Inscrito el: ${new Date(eq.fechaRegistro).toLocaleString()}
+            </div>
+        ` : ''}
     `;
 
     const modal = document.getElementById('modalDetalle');
@@ -187,5 +222,37 @@ document.getElementById('btnSiguiente').addEventListener('click', () => {
     const totalPaginas = Math.ceil(equiposFiltrados.length / filasPorPagina);
     if(paginaActual < totalPaginas) { paginaActual++; renderizarTabla(); }
 });
+
+function calcularInfoEdad(fechaNacimiento) {
+    if (!fechaNacimiento) return null;
+    
+    const hoy = new Date();
+    const cumple = new Date(fechaNacimiento);
+    
+    // 1. Cálculo de edad actual
+    let edad = hoy.getFullYear() - cumple.getFullYear();
+    const m = hoy.getMonth() - cumple.getMonth();
+    if (m < 0 || (m === 0 && hoy.getDate() < cumple.getDate())) {
+        edad--;
+    }
+
+    // 2. Validación según TUS límites exactos
+    const limiteViejo = "2007-07-08"; 
+    const limiteJoven = "2011-03-12"; 
+    
+    // Verificamos si está en el rango permitido
+    const esApto = fechaNacimiento >= limiteViejo && fechaNacimiento <= limiteJoven;
+
+    // 3. Días para el próximo cumple (opcional pero se ve genial)
+    let proximoCumple = new Date(hoy.getFullYear(), cumple.getMonth(), cumple.getDate());
+    if (hoy > proximoCumple) proximoCumple.setFullYear(hoy.getFullYear() + 1);
+    const diasFaltantes = Math.ceil((proximoCumple - hoy) / (1000 * 60 * 60 * 24));
+
+    return {
+        texto: `${edad} años (${diasFaltantes} días para los ${edad + 1})`,
+        color: esApto ? '#27ae60' : '#e74c3c', // Verde si es apto, Rojo si no
+        apto: esApto
+    };
+}
 
 cargarDatosDesdeFirebase();
